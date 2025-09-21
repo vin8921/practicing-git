@@ -26,7 +26,7 @@ eg : mv index.html style.css script.js git-folder/
 
 10. if u want to check the branches = use git branch 
 
-11. if u want to delete a branch = use git branch -d (existing branch name) = eg : git -d feature
+11. if u want to delete a branch = use git branch -d (existing branch name) = eg : git -d OR D feature
 
 12. if u want to rename a branch name = use git branch -M main = eg : main branch name is (master) => after using this master branch name will change into main branch name.
 
@@ -52,3 +52,8 @@ git revert -m 1 <merge-commit-hash>
 -m 1 tells Git to keep the first parent (main) and undo the changes from the merged branch.
 
 This creates a new commit that undoes everything from that merge, including the file.
+
+
+18. if u want to know where ur local repo is connected to remote repo = use git remote show origin
+
+19. if u want to push ur file from local repo to remote repo = use git push -u origin main
