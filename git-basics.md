@@ -98,3 +98,12 @@ there are 3 methods to reset a commit u made :
 10. git revert --no-commit head~5 
 
 11. git revert --continue => 	
+
+
+12. if u want to revert 2 or more from above to below : use like this  = git revert head~3..head
+
+13. if u want to revert 2 or more from above to below at once : use like this  = $ git revert --no-commit head~2..
+
+14.  if u want to abort the commit use : git revert --abort
+
+15. if u want to continue the commit : git revert --continue 
