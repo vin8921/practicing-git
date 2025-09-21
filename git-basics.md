@@ -57,3 +57,7 @@ This creates a new commit that undoes everything from that merge, including the 
 18. if u want to know where ur local repo is connected to remote repo = use git remote show origin
 
 19. if u want to push ur file from local repo to remote repo = use git push -u origin main
+
+20. if sync changes shows in the source control it means that if u have update anything in local repo they ask you to update in remote repo
+
+21. if u want to add the main branch code to the default branch use git push (main branch name)
