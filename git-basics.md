@@ -70,3 +70,31 @@ This creates a new commit that undoes everything from that merge, including the 
 - so , therefore u have to add 2 or more commits and then prompt : git reset --hard head~2 , then point it to main branch
 
 - then the head will attach to the main
+
+23. git 
+
+there are 3 methods to reset a commit u made :
+
+1. git reset --hard, this method will delete the commit and put the head section to the previous main section
+2. git reset --soft, by this method it will delete the commited changes and bring it back to the staged changes section
+3. git reset , by this method it will delete the commited changes and bring it back to the changes section
+
+4. if you want to recover or revert a commit that u have deleted u can find it by the
+- first step : git reflog 
+- second step : take the id of the commit u want to recover 
+- third step : git --hard (enter the id);
+- when u are using this method make sure that your code stays in the local and not push to the GitHub
+
+5. git checkout head - this code will point out to the current directory u are
+
+6. git checkout head~0 - this code will point out to the current directory u are
+
+7. git checkout head~1 - head section will step down to the below directory from the current directory
+
+8. git revert (id) - 
+
+9. git revert head3..head
+
+10. git revert --no-commit head~5 
+
+11. git revert --continue => 	
