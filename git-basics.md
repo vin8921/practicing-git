@@ -40,3 +40,15 @@ eg : mv index.html style.css script.js git-folder/
 
 14. if you want to merge a branch to the main branch = use git merge (mention the file name that you want to merge,) when u are merging the file don't merge the current file , for eg : if u want merge feature in main branch then mention => git merge feature in main branch as the current file.
 
+15. if u want to checkout out in the old commits = > use git checkout (mention the previous id commit)
+
+16. if u see a file in the normal stages section it means that the code is untracked.
+
+17. Revert the merge:
+
+git revert -m 1 <merge-commit-hash>
+
+
+-m 1 tells Git to keep the first parent (main) and undo the changes from the merged branch.
+
+This creates a new commit that undoes everything from that merge, including the file.
