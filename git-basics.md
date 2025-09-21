@@ -61,3 +61,12 @@ This creates a new commit that undoes everything from that merge, including the 
 20. if sync changes shows in the source control it means that if u have update anything in local repo they ask you to update in remote repo
 
 21. if u want to add the main branch code to the default branch use git push (main branch name)
+
+22.  the head gets detached from the main when u checkout through the deleted commits and u want and it will come to the main :
+
+- when u enter this git checkout head , it will still detach from the main 
+- when u enter this git checkout --hard head!~1 it will still detach from the main 
+
+- so , therefore u have to add 2 or more commits and then prompt : git reset --hard head~2 , then point it to main branch
+
+- then the head will attach to the main
