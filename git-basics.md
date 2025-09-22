@@ -107,3 +107,239 @@ there are 3 methods to reset a commit u made :
 14.  if u want to abort the commit use : git revert --abort
 
 15. if u want to continue the commit : git revert --continue 
+
+16. git merge --abort = is used when u pulled a remote branch to local branch and u want to undo the merge
+
+Great question 🙌 — this is one of the most **important Git concepts** for teamwork. Let’s break it down clearly.
+
+---
+
+# 🔎 What is a Git conflict?
+
+A **merge conflict** happens when Git cannot automatically decide **which changes to keep** during a merge, rebase, or cherry-pick.
+
+This usually happens when:
+
+* Two branches edit the **same line** in a file differently.
+* Or one branch deletes a file while the other branch edits it.
+
+---
+
+## 📌 Example
+
+You have a file `index.html`:
+
+**On `main`:**
+
+```html
+<h1>Hello World</h1>
+```
+
+**On `feature`:**
+
+```html
+<h1>Hello Git</h1>
+```
+
+Now, when you try:
+
+```bash
+git checkout main
+git merge feature
+```
+
+Git sees that **both changed the same line** → it can’t decide → **conflict**.
+
+---
+
+# 🛑 How Git shows a conflict
+
+Inside the file, Git adds conflict markers:
+
+```html
+<<<<<<< HEAD
+<h1>Hello World</h1>
+=======
+<h1>Hello Git</h1>
+>>>>>>> feature
+```
+
+* `<<<<<<< HEAD` → your current branch’s version.
+* `=======` → separator.
+* `>>>>>>> feature` → the incoming branch’s version.
+
+---
+
+# ✅ How to Fix a Conflict
+
+### 1. Open the file with conflicts
+
+Look for `<<<<<<<`, `=======`, and `>>>>>>>`.
+
+### 2. Choose how to resolve
+
+You can:
+
+* Keep your branch’s changes.
+* Keep the other branch’s changes.
+* **Combine/edit manually**.
+
+Example fix:
+
+```html
+<h1>Hello World from Git</h1>
+```
+
+### 3. Mark as resolved
+
+After editing, run:
+
+```bash
+git add index.html
+```
+
+### 4. Complete the merge
+
+```bash
+git commit
+```
+
+---
+
+# ⚡ Tools to Help
+
+* In **VS Code**, Git shows conflict sections with buttons:
+
+  * “Accept Current Change”
+  * “Accept Incoming Change”
+  * “Accept Both Changes”
+* In Git Bash, you’ll edit files manually.
+
+---
+
+# ✅ Summary
+
+* **Git conflict** = Git doesn’t know which change to keep.
+* Fix = manually edit the file, choose the correct code, then `git add` + `git commit`.
+
+---
+
+👉 Do you want me to make a **step-by-step practice exercise** where you intentionally create a conflict and then resolve it, so you can try it out locally?
+
+
+Perfect timing 🚀 — these **stash commands** are very handy when working with Git. Let’s go step by step:
+
+---
+
+# 🔑 What is `git stash`?
+
+`git stash` temporarily saves your **uncommitted changes** (both staged and unstaged) so you can work on something else without committing them.
+
+Think of it like a **clipboard** for your changes.
+
+---
+
+## 📌 Main Stash Commands
+
+### 1. `git stash`
+
+* Saves your current changes and makes your working directory **clean** (like you just checked out the branch fresh).
+
+```bash
+git stash
+```
+
+Now your changes are hidden in the stash list.
+
+---
+
+### 2. `git stash list`
+
+* Shows all saved stashes.
+
+```bash
+git stash list
+```
+
+Output example:
+
+```
+stash@{0}: WIP on main: 1234abc Added new feature
+stash@{1}: WIP on feature: 5678def Fixed bug
+```
+
+---
+
+### 3. `git stash apply`
+
+* Applies a stash (by default the latest one) **without removing it** from the stash list.
+
+```bash
+git stash apply
+```
+
+Or apply a specific stash:
+
+```bash
+git stash apply stash@{1}
+```
+
+---
+
+### 4. `git stash drop`
+
+* Deletes a stash from the list.
+
+```bash
+git stash drop stash@{0}
+```
+
+---
+
+### 5. `git stash clear`
+
+* Removes **all stashes**. Be careful ⚠️.
+
+```bash
+git stash clear
+```
+
+---
+
+## 📌 Workflow Example
+
+1. You’re working on `index.html` but need to switch branches:
+
+   ```bash
+   git stash
+   ```
+
+   → Your changes are saved, working directory is clean.
+
+2. Switch branches, do some work.
+
+3. Come back, reapply your saved work:
+
+   ```bash
+   git stash apply
+   ```
+
+4. After confirming you no longer need it:
+
+   ```bash
+   git stash drop
+   ```
+
+---
+
+## ⚡ Quick Analogy
+
+* `git stash` = put changes in your **pocket**.
+* `git stash list` = check your pockets.
+* `git stash apply` = take changes out of your pocket but **leave a copy** inside.
+* `git stash drop` = throw away one pocket.
+* `git stash clear` = empty all pockets.
+
+---
+
+👉 Do you want me to also show you how to **stash only specific files or even untracked fil
