@@ -343,3 +343,8 @@ git stash clear
 ---
 
 👉 Do you want me to also show you how to **stash only specific files or even untracked fil
+
+
+# cherry pick in git :
+
+- When you don't want ur code to completely merge a branch to main branch or another branch, when u only want to merge a particular part of code in a branch
