@@ -657,3 +657,120 @@ Sure! Here's a **simplified and easy-to-understand paraphrasing** of your explan
 ---
 
 Let me know if you'd like this formatted as a visual guide or markdown file you can reuse!
+
+
+
+Sure! Here's your explanation **paraphrased into simple and clear language** so others can easily understand each Git command and tip:
+
+---
+
+### 🔄 Undoing Staged Changes
+
+**Command:** `git restore --staged .`
+
+> This removes all files from the staging area (unstages them) but keeps your actual file changes.
+
+---
+
+### ✅ Add and Commit in One Step
+
+**Command:** `git commit -am "message"`
+
+> This stages **and** commits your **already tracked** files in one step. It won’t add new files — just modified ones.
+
+---
+
+### 🗑️ Accidentally Deleted a File and Pushed? Here's How to Restore It
+
+1. Find the **commit ID** (hash) where the file still existed.
+2. Run: `git checkout <commit-id> -- <filename>`
+
+> This brings the deleted file back from that older commit.
+
+3. Then run:
+
+```bash
+git add <filename>
+git commit -m "Restore deleted file"
+git push
+```
+
+---
+
+### 🛠️ Change Global Git Username or Email
+
+**Command:** `git config --global -e`
+
+> Opens the global config file in your default editor. You can update your username or email here.
+
+---
+
+### 🔀 Switch Branches
+
+**Command:** `git switch <branch-name>`
+
+> Changes to another branch.
+
+---
+
+### 🌱 Create and Switch to a New Branch
+
+**Command:** `git switch -C <new-branch-name>`
+
+> Creates a new branch and switches to it at the same time. The `-C` means "create."
+
+---
+
+### 🔙 Revert a Commit After a Merge
+
+**Command:** `git revert <commit-id> -m 1`
+
+> If you made a **merge commit** and want to undo it, use this.
+> `-m 1` tells Git to keep the **main branch's** changes and undo the merge.
+
+---
+
+Let me know if you want all these tips bundled into a cheat sheet!
+
+
+Great question!
+
+### 🔁 What does the number after `-m` mean in `git revert <commit-id> -m <number>`?
+
+The number after `-m` **specifies the "parent" of the merge commit** that Git should treat as the main line of development — the one you want to keep when you revert the merge.
+
+---
+
+### 📌 Example:
+
+Let’s say you merged `feature` into `main`, so your merge commit has **two parents**:
+
+* `main` (parent 1)
+* `feature` (parent 2)
+
+Now if you run:
+
+* `git revert <merge-commit-id> -m 1` →
+  Git will **keep the changes from `main`** and **undo the changes from `feature`**.
+
+* `git revert <merge-commit-id> -m 2` →
+  Git will **keep the changes from `feature`** and **undo the changes from `main`**.
+
+So, the number tells Git:
+👉 "**Which branch should be considered the base, and which one should be rolled back?**"
+
+---
+
+### ⚠️ Important:
+
+* You usually use `-m 1` because most of the time, the first parent is your main or base branch.
+* Using the wrong number can lead to unexpected changes being undone — so be sure you know which parent is which.
+
+You can view the parents of a commit using:
+
+```bash
+git log <merge-commit-id>^1
+git log <merge-commit-id>^2
+```
+
+Let me know if you want help identifying which parent is which in a real example.
